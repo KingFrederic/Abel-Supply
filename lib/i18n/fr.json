@@ -1,0 +1,71 @@
+{
+  "brand": { "name": "IDOWU MATÉRIAUX", "subtitle": "Fournisseur direct de matériaux de construction" },
+  "nav": { "how": "Comment ça marche", "supply": "Ce que je fournis", "about": "Qui suis-je", "contact": "Contact" },
+  "hero": {
+    "headline": "Votre devis. Mon prix.",
+    "headlineAccent": "Jusqu'à 30% d'économies.",
+    "sub": "J'approvisionne votre chantier — bâtisse, plomberie, électricité, salles de bain, portes — directement auprès de mes fournisseurs. Vous payez bien moins, sans compromis sur la qualité.",
+    "ctaWhatsapp": "Envoyer mon devis sur WhatsApp",
+    "ctaCall": "Appeler maintenant"
+  },
+  "how": {
+    "title": "Comment ça marche",
+    "steps": [
+      { "n": "01", "title": "Envoyez votre devis", "body": "Sur WhatsApp, en photo ou en PDF. Aucune mise en forme requise." },
+      { "n": "02", "title": "Je source le matériel", "body": "Auprès de mon réseau de fournisseurs directs à Abidjan." },
+      { "n": "03", "title": "Vous économisez", "body": "Même matériel, livré sur chantier, bien moins cher que le prix du marché." }
+    ]
+  },
+  "supply": {
+    "title": "Ce que je fournis",
+    "cards": [
+      { "title": "Matériaux de bâtisse", "items": "Ciment · Sable · Gravier · Parpaings · Fer à béton · Tôles" },
+      { "title": "Plomberie", "items": "Tuyauterie · Raccords · Citernes · Robinetterie" },
+      { "title": "Électricité", "items": "Câbles · Disjoncteurs · Prises · Luminaires" },
+      { "title": "Salles de bain & portes", "items": "Sanitaires complets · Portes intérieures et extérieures" }
+    ]
+  },
+  "about": {
+    "title": "Qui suis-je",
+    "name": "Abel Destinée Idowu",
+    "location": "Yopougon Banco 2, Abidjan",
+    "body": "Depuis plusieurs années, j'accompagne particuliers, entrepreneurs et promoteurs à construire mieux en dépensant moins. Mon réseau de fournisseurs couvre toute la zone Abidjan et au-delà. De la villa familiale au chantier multi-lots, je travaille avec votre devis existant et je vous propose le même matériel à un prix bien plus juste.",
+    "guarantee": "Si je ne peux pas battre votre devis, je vous le dirai honnêtement."
+  },
+  "why": {
+    "title": "Pourquoi moins cher ?",
+    "points": [
+      { "title": "Relations directes", "body": "Avec les importateurs et grossistes d'Abidjan. Pas d'intermédiaire entre la source et votre chantier." },
+      { "title": "Aucune marge gonflée", "body": "Je travaille en commission transparente, pas en revente masquée." },
+      { "title": "Achats groupés", "body": "Volume agrégé sur plusieurs chantiers actifs. Vous bénéficiez du pouvoir de négociation collectif." }
+    ]
+  },
+  "projects": {
+    "title": "Chantiers récents",
+    "caseStudy": { "label": "Étude de cas", "title": "Villa R+1, Cocody", "before": "Devis original : 12 000 000 CFA", "after": "Prix final : 9 200 000 CFA", "savings": "Économie : 2 800 000 CFA" },
+    "placeholder": "Photos de chantier à venir"
+  },
+  "forWhom": {
+    "title": "Pour qui",
+    "items": ["Particuliers construisant leur maison", "Entrepreneurs en bâtiment", "Promoteurs immobiliers", "Architectes et bureaux d'études"]
+  },
+  "contact": {
+    "title": "Parlons de votre chantier",
+    "sub": "Envoyez-moi votre devis. Je vous réponds sous 24 heures.",
+    "whatsapp": "WhatsApp",
+    "call": "Appel direct",
+    "email": "Email",
+    "address": "Adresse",
+    "social": "Réseaux sociaux",
+    "form": {
+      "name": "Votre nom",
+      "phone": "Téléphone",
+      "message": "Décrivez votre projet",
+      "file": "Joindre votre devis (PDF ou image)",
+      "submit": "Envoyer",
+      "success": "Merci. Je vous réponds sous 24 heures.",
+      "error": "Une erreur s'est produite. Essayez WhatsApp."
+    }
+  },
+  "footer": { "tagline": "Construire mieux, dépenser moins.", "rights": "Tous droits réservés." }
+}

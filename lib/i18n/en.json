@@ -1,0 +1,71 @@
+{
+  "brand": { "name": "IDOWU MATÉRIAUX", "subtitle": "Direct construction-materials supplier" },
+  "nav": { "how": "How it works", "supply": "What I supply", "about": "About me", "contact": "Contact" },
+  "hero": {
+    "headline": "Your quote. My price.",
+    "headlineAccent": "Save up to 30%.",
+    "sub": "I supply your construction site — structural, plumbing, electrical, bathrooms, doors — directly from my supplier network. You pay far less, with no compromise on quality.",
+    "ctaWhatsapp": "Send my quote on WhatsApp",
+    "ctaCall": "Call now"
+  },
+  "how": {
+    "title": "How it works",
+    "steps": [
+      { "n": "01", "title": "Send your quote", "body": "Over WhatsApp, photo or PDF. No formatting required." },
+      { "n": "02", "title": "I source the materials", "body": "From my network of direct suppliers across Abidjan." },
+      { "n": "03", "title": "You save", "body": "Same materials, delivered to site, well below standard market price." }
+    ]
+  },
+  "supply": {
+    "title": "What I supply",
+    "cards": [
+      { "title": "Structural materials", "items": "Cement · Sand · Gravel · Blocks · Rebar · Roofing" },
+      { "title": "Plumbing", "items": "Pipes · Fittings · Tanks · Fixtures" },
+      { "title": "Electrical", "items": "Cables · Breakers · Sockets · Lighting" },
+      { "title": "Bathrooms & doors", "items": "Complete sanitaryware · Interior and exterior doors" }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "name": "Abel Destinée Idowu",
+    "location": "Yopougon Banco 2, Abidjan",
+    "body": "For several years I've helped homeowners, contractors, and developers build better while spending less. My supplier network covers all of Abidjan and beyond. From single-family villas to multi-lot developments, I work with your existing quote and bring you the same materials at a far fairer price.",
+    "guarantee": "If I can't beat your quote, I'll tell you honestly."
+  },
+  "why": {
+    "title": "Why cheaper?",
+    "points": [
+      { "title": "Direct relationships", "body": "With Abidjan's importers and wholesalers. No middleman between source and your site." },
+      { "title": "No inflated margin", "body": "Transparent commission, not hidden resale." },
+      { "title": "Pooled purchasing", "body": "Aggregated volume across active sites. You benefit from collective negotiating power." }
+    ]
+  },
+  "projects": {
+    "title": "Recent projects",
+    "caseStudy": { "label": "Case study", "title": "Two-story villa, Cocody", "before": "Original quote: 12,000,000 CFA", "after": "Final price: 9,200,000 CFA", "savings": "Saved: 2,800,000 CFA" },
+    "placeholder": "Site photos coming soon"
+  },
+  "forWhom": {
+    "title": "Who this is for",
+    "items": ["Homeowners building their house", "Construction contractors", "Real-estate developers", "Architects and engineering firms"]
+  },
+  "contact": {
+    "title": "Let's talk about your project",
+    "sub": "Send me your quote. I reply within 24 hours.",
+    "whatsapp": "WhatsApp",
+    "call": "Direct call",
+    "email": "Email",
+    "address": "Address",
+    "social": "Social",
+    "form": {
+      "name": "Your name",
+      "phone": "Phone",
+      "message": "Describe your project",
+      "file": "Attach your quote (PDF or image)",
+      "submit": "Send",
+      "success": "Thank you. I'll reply within 24 hours.",
+      "error": "Something went wrong. Try WhatsApp."
+    }
+  },
+  "footer": { "tagline": "Build better, spend less.", "rights": "All rights reserved." }
+}
