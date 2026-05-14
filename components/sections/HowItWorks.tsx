@@ -10,13 +10,9 @@ export default function HowItWorks() {
   const v = shouldReduce ? revealVariantsReduced : revealVariants;
 
   return (
-    <section id="how" className="py-28 sm:py-36 bg-bg-elev relative overflow-hidden">
-
-      {/* Decorative left stripe */}
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-amber/20 to-transparent" />
-
-      {/* Ambient blob */}
-      <div className="absolute -top-40 right-1/4 w-[500px] h-[500px] rounded-full bg-amber/4 blur-[100px] pointer-events-none" />
+    <section id="how" className="py-32 sm:py-44 relative overflow-hidden" style={{ background: '#0C0D10' }}>
+      {/* Top divider */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
@@ -26,55 +22,59 @@ export default function HowItWorks() {
           variants={staggerParent}
         >
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+          <div className="mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
             <div>
-              <motion.span variants={v} className="section-label block mb-5">Processus</motion.span>
-              <motion.h2 variants={v} className="display-xl text-white">
+              <motion.div variants={v} className="flex items-center gap-4 mb-8">
+                <div className="w-8 h-px bg-[#C9A96E]" />
+                <span className="section-label">Processus</span>
+              </motion.div>
+              <motion.h2 variants={v} className="display-xl text-white max-w-xl">
                 {t.how.title}
               </motion.h2>
             </div>
-            <motion.p variants={v} className="text-text-muted text-base max-w-sm leading-relaxed">
-              Aucune démarche compliquée. Trois étapes simples entre vous et des économies réelles.
+            <motion.p variants={v} className="text-text-muted text-base max-w-xs leading-relaxed">
+              Trois étapes simples entre vous et des économies concrètes.
             </motion.p>
           </div>
 
-          {/* Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* Steps — 3 columns, editorial */}
+          <div className="grid grid-cols-1 md:grid-cols-3">
             {t.how.steps.map((step, i) => (
               <motion.div
                 key={i}
                 variants={v}
-                className="relative group"
+                className="group relative md:px-12 first:md:pl-0 last:md:pr-0 py-12 md:py-0"
+                style={{
+                  borderRight: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                  paddingBottom: '3rem',
+                }}
               >
-                {/* Connector line between cards (desktop) */}
-                {i < 2 && (
-                  <div className="hidden md:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-amber/30 to-transparent z-10 -translate-x-8" />
-                )}
-
-                <div className="relative p-8 rounded-2xl bg-bg-card border border-white/5 hover:border-amber/15 transition-all duration-500 shadow-card hover:shadow-card-hover overflow-hidden h-full">
-                  {/* Big step number watermark */}
-                  <span className="absolute -top-4 -right-2 font-display font-bold text-[100px] leading-none text-white/[0.03] select-none pointer-events-none">
-                    {step.n}
-                  </span>
-
-                  {/* Step indicator */}
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-10 h-10 rounded-xl bg-amber/10 border border-amber/20 flex items-center justify-center">
-                      <span className="font-display font-bold text-sm text-amber">{step.n}</span>
-                    </div>
-                    <div className="flex-1 h-px bg-gradient-to-r from-amber/20 to-transparent" />
-                  </div>
-
-                  <h3 className="font-display font-bold text-xl text-white mb-4 leading-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-text-muted leading-relaxed text-[15px]">
-                    {step.body}
-                  </p>
-
-                  {/* Bottom accent on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber/0 to-transparent group-hover:via-amber/30 transition-all duration-700" />
+                {/* Step number — large watermark */}
+                <div
+                  className="font-display font-bold text-[100px] leading-none select-none mb-8 transition-colors duration-700"
+                  style={{ color: 'rgba(255,255,255,0.03)' }}
+                  aria-hidden
+                >
+                  {step.n}
                 </div>
+
+                {/* Gold accent line — grows on hover */}
+                <div
+                  className="h-px mb-8 transition-all duration-500 group-hover:opacity-100"
+                  style={{
+                    width: '3rem',
+                    background: 'linear-gradient(90deg, #C9A96E, transparent)',
+                    opacity: 0.5,
+                  }}
+                />
+
+                <h3 className="font-display font-bold text-xl text-white mb-4 leading-tight">
+                  {step.title}
+                </h3>
+                <p className="text-text-muted leading-[1.85] text-[15px]">
+                  {step.body}
+                </p>
               </motion.div>
             ))}
           </div>

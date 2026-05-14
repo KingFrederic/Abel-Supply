@@ -5,6 +5,7 @@ import en from '@/lib/i18n/en.json';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/hero/Hero';
+import Marquee from '@/components/ui/Marquee';
 import HowItWorks from '@/components/sections/HowItWorks';
 import WhatISupply from '@/components/sections/WhatISupply';
 import WhoAmI from '@/components/sections/WhoAmI';
@@ -47,19 +48,12 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        fr: '/fr',
-        en: '/en',
-      },
+      languages: { fr: '/fr', en: '/en' },
     },
   };
 }
 
-export default function LocalePage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default function LocalePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   if (!locales.includes(locale as Locale)) notFound();
 
@@ -68,6 +62,7 @@ export default function LocalePage({
       <Header locale={locale} />
       <main>
         <Hero locale={locale} />
+        <Marquee />
         <HowItWorks />
         <WhatISupply />
         <WhoAmI locale={locale} />
