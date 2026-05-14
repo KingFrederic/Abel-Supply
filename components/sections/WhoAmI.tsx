@@ -4,9 +4,13 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useT } from '@/lib/i18n/provider';
 import { revealVariants, revealVariantsReduced, staggerParent } from '@/lib/motion';
+import { proxy, picsum } from '@/lib/img';
 
-const PHOTO = 'https://images.unsplash.com/photo-pdKdz5xFv_Y?auto=format&fit=crop&w=1200&q=85';
-const PHOTO_FALLBACK = 'https://images.unsplash.com/photo-DzYT1tfcDq4?auto=format&fit=crop&w=1200&q=85';
+// Professional supplier photo — proxied so the local Next.js server fetches it
+// (avoids Unsplash CDN blocking localhost's Referer header).
+// picsum fallback is fetched directly by the browser and has no domain restrictions.
+const PHOTO = proxy('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=85');
+const PHOTO_FALLBACK = picsum('supplier-pro', 1200, 1600);
 
 export default function WhoAmI({ locale: _locale }: { locale: string }) {
   const t = useT();

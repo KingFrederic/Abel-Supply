@@ -5,13 +5,14 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useT } from '@/lib/i18n/provider';
 import { revealVariants, revealVariantsReduced, staggerParent } from '@/lib/motion';
 import PinnedCaseStudy from './PinnedCaseStudy';
+import { proxy, picsum } from '@/lib/img';
 
 const CDN = 'https://images.unsplash.com';
 
 const PROJECTS = [
   {
-    src: `${CDN}/photo-G48h926L2qo?auto=format&fit=crop&w=1400&q=85`,
-    fallback: `${CDN}/photo-jEKph2ZmRXY?auto=format&fit=crop&w=1400&q=85`,
+    src: proxy(`${CDN}/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85`),
+    fallback: picsum('villa-cocody', 1400, 1100),
     alt: 'Villa R+1 — Cocody, Abidjan',
     label: 'Villa R+1',
     location: 'Cocody',
@@ -20,8 +21,8 @@ const PROJECTS = [
     height: 'min-h-[360px] lg:min-h-[560px]',
   },
   {
-    src: `${CDN}/photo-4nDEdZZjaQQ?auto=format&fit=crop&w=900&q=80`,
-    fallback: `${CDN}/photo-rLtWTW1PQI0?auto=format&fit=crop&w=900&q=80`,
+    src: proxy(`${CDN}/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80`),
+    fallback: picsum('residence-yopougon', 900, 700),
     alt: 'Résidence R+2 — Yopougon',
     label: 'Résidence R+2',
     location: 'Yopougon',
@@ -30,8 +31,8 @@ const PROJECTS = [
     height: 'min-h-[260px]',
   },
   {
-    src: `${CDN}/photo-PlBsJ5MybGc?auto=format&fit=crop&w=900&q=80`,
-    fallback: `${CDN}/photo-kO8f82u73Es?auto=format&fit=crop&w=900&q=80`,
+    src: proxy(`${CDN}/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=900&q=80`),
+    fallback: picsum('immeuble-marcory', 900, 700),
     alt: 'Immeuble R+3 — Marcory',
     label: 'Immeuble R+3',
     location: 'Marcory',
@@ -40,8 +41,8 @@ const PROJECTS = [
     height: 'min-h-[260px]',
   },
   {
-    src: `${CDN}/photo-vYqFeeM2XPk?auto=format&fit=crop&w=900&q=80`,
-    fallback: `${CDN}/photo-GqlosWVi5zo?auto=format&fit=crop&w=900&q=80`,
+    src: proxy(`${CDN}/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=80`),
+    fallback: picsum('bathroom-plateau', 900, 700),
     alt: 'Salle de bain premium — Plateau',
     label: 'Salle de bain premium',
     location: 'Plateau',
@@ -50,8 +51,8 @@ const PROJECTS = [
     height: 'min-h-[260px]',
   },
   {
-    src: `${CDN}/photo-ZFxyH1abdTE?auto=format&fit=crop&w=900&q=80`,
-    fallback: `${CDN}/photo-bRC0o9MUTh8?auto=format&fit=crop&w=900&q=80`,
+    src: proxy(`${CDN}/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80`),
+    fallback: picsum('chantier-abobo', 900, 700),
     alt: 'Chantier mixte — Abobo',
     label: 'Chantier mixte',
     location: 'Abobo',

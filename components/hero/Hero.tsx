@@ -10,6 +10,9 @@ import { heroScrollProgress } from '@/lib/heroScroll';
 import HeroFallback from './HeroFallback';
 import IntroSweep from './IntroSweep';
 import KineticHeadline from './KineticHeadline';
+import { proxy } from '@/lib/img';
+
+const MOBILE_BG = proxy('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80');
 
 const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false, loading: () => null });
 
@@ -80,7 +83,7 @@ export default function Hero({ locale }: { locale: string }) {
           <div
             className="fixed inset-0 z-0"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-rLtWTW1PQI0?auto=format&fit=crop&w=1200&q=80')`,
+              backgroundImage: `url('${MOBILE_BG}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
