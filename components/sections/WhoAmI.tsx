@@ -23,6 +23,7 @@ export default function WhoAmI({ locale: _locale }: { locale: string }) {
             src={PHOTO}
             alt="Abel Destinée Idowu — fournisseur de matériaux"
             fill
+            unoptimized
             className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority

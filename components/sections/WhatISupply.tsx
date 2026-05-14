@@ -86,6 +86,7 @@ export default function WhatISupply() {
                     src={ph.src}
                     alt={ph.alt}
                     fill
+                    unoptimized
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     onError={(e) => { (e.currentTarget as HTMLImageElement).src = ph.fallback; }}
