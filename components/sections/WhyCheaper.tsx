@@ -10,73 +10,71 @@ export default function WhyCheaper() {
   const v = shouldReduce ? revealVariantsReduced : revealVariants;
 
   return (
-    <section className="py-32 sm:py-44 bg-bg relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+    <section className="relative overflow-hidden" style={{ background: '#FFFFFF' }}>
+      {/* Top hairline */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
 
-        {/* Full-width gold divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#C9A96E]/20 to-transparent mb-20" />
+      {/* Full-width pullquote banner */}
+      <div className="border-b" style={{ borderColor: 'rgba(0,0,0,0.08)' }}>
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="display-2xl font-light italic leading-[1.1] max-w-5xl"
+            style={{ color: '#111118', letterSpacing: '-0.01em' }}
+          >
+            &ldquo;Aucun intermédiaire entre vous et le prix d&apos;usine.&rdquo;
+          </motion.p>
+        </div>
+      </div>
 
+      {/* Three-column breakdown */}
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
         <motion.div
-          initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={staggerParent}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerParent}
         >
-          {/* Header */}
-          <div className="mb-20">
-            <motion.span
-              variants={v}
-              className="block mb-5 font-display text-[11px] font-semibold uppercase tracking-[0.2em]"
-              style={{ color: '#C9A96E' }}
-            >
-              Transparence
-            </motion.span>
-            <motion.h2 variants={v} className="display-xl text-white max-w-3xl">
-              {t.why.title}
-            </motion.h2>
-          </div>
+          <div className="flex flex-col sm:flex-row gap-px" style={{ background: 'rgba(0,0,0,0.06)' }}>
+            {/* Label column */}
+            <motion.div variants={v} className="bg-white sm:w-48 shrink-0 px-8 py-12 flex items-start">
+              <span className="font-display text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: '#C9A96E' }}>
+                {t.why.title}
+              </span>
+            </motion.div>
 
-          {/* Three-column editorial layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3">
+            {/* Points */}
             {t.why.points.map((point, i) => (
               <motion.div
                 key={i}
                 variants={v}
-                className={`relative pr-12 ${i < t.why.points.length - 1 ? 'md:border-r border-white/[0.06]' : ''} ${i > 0 ? 'md:pl-12 md:pr-0 mt-12 md:mt-0' : ''} group`}
+                className="bg-white flex-1 px-8 py-12 group"
               >
-                {/* Index number */}
                 <div
-                  className="font-display font-bold leading-none mb-6 select-none"
-                  style={{
-                    fontSize: '4.5rem',
-                    color: 'rgba(255,255,255,0.04)',
-                    letterSpacing: '-0.03em',
-                  }}
+                  className="font-display font-light leading-none mb-8 select-none"
+                  style={{ fontSize: '3.5rem', color: 'rgba(201,169,110,0.2)', letterSpacing: '-0.04em' }}
+                  aria-hidden
                 >
                   {String(i + 1).padStart(2, '0')}
                 </div>
-
-                {/* Thin separator line above title */}
-                <div className="w-8 h-px mb-6" style={{ background: '#C9A96E', opacity: 0.4 }} />
-
-                <h3 className="font-display font-bold text-xl text-white mb-4 leading-tight">
+                <div className="w-8 h-px mb-8 group-hover:w-14 transition-all duration-500" style={{ background: '#C9A96E' }} />
+                <h3 className="font-display font-semibold text-xl mb-4 leading-tight" style={{ color: '#111118' }}>
                   {point.title}
                 </h3>
-                <p className="text-[#7A7880] leading-relaxed text-[15px]">
+                <p className="text-[15px] leading-[1.85]" style={{ color: '#888' }}>
                   {point.body}
                 </p>
               </motion.div>
             ))}
           </div>
-
-          {/* Full-width bottom statement */}
-          <motion.div variants={v} className="mt-24 pt-16 border-t border-white/[0.06] text-center">
-            <p
-              className="font-display font-medium text-xl sm:text-2xl italic leading-relaxed"
-              style={{ color: 'rgba(255,255,255,0.35)' }}
-            >
-              Aucun intermédiaire entre vous et le prix d&apos;usine.
-            </p>
-          </motion.div>
         </motion.div>
       </div>
+
+      {/* Bottom hairline */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
     </section>
   );
 }
