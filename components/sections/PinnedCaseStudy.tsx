@@ -34,7 +34,7 @@ export default function PinnedCaseStudy({ caseStudy }: { caseStudy: CaseStudy })
   const translateY = useTransform(scrollYProgress, [0.1, 0.3], [32, 0]);
 
   return (
-    <div ref={ref} style={{ height: '200vh', position: 'relative' }}>
+    <div ref={ref} style={{ height: '100vh', position: 'relative' }}>
       <div
         className="sticky top-0 flex items-center overflow-hidden"
         style={{ height: '100vh', background: '#0A0B0F' }}

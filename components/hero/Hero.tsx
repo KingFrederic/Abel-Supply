@@ -16,7 +16,7 @@ const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false, loading: ()
 const STATS = [
   { value: '30%', label: 'Économies garanties' },
   { value: '24h', label: 'Délai de réponse' },
-  { value: '100+', label: 'Chantiers livrés' },
+  { value: '100+', label: 'Chantiers · cette année' },
 ];
 
 export default function Hero({ locale }: { locale: string }) {
@@ -26,6 +26,8 @@ export default function Hero({ locale }: { locale: string }) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [canvasVisible, setCanvasVisible] = useState(true);
   const [ready, setReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,7 +39,14 @@ export default function Hero({ locale }: { locale: string }) {
   }, [scrollYProgress]);
 
   useEffect(() => {
-    if (shouldReduce) { setReady(true); return; }
+    setIsMobile(window.innerWidth < 768);
+    const alreadySeen = sessionStorage.getItem('introFired') === '1';
+    if (shouldReduce || alreadySeen) {
+      setReady(true);
+      setShowIntro(false);
+      return;
+    }
+    setShowIntro(true);
     const onComplete = () => setReady(true);
     window.addEventListener('intro:complete', onComplete, { once: true });
     const fallback = setTimeout(() => setReady(true), 2200);
@@ -63,10 +72,10 @@ export default function Hero({ locale }: { locale: string }) {
 
   return (
     <>
-      {!shouldReduce && <IntroSweep />}
+      {showIntro && <IntroSweep />}
 
-      <div ref={containerRef} className="relative" style={{ height: '200vh' }}>
-        {canvasVisible && <HeroScene reduced={!!shouldReduce} />}
+      <div ref={containerRef} className="relative" style={{ height: isMobile ? '120vh' : '200vh' }}>
+        {canvasVisible && !isMobile && <HeroScene reduced={!!shouldReduce} />}
 
         {/* Sticky overlay — sits above the canvas */}
         <div className="sticky top-0 h-screen overflow-hidden" style={{ zIndex: 1 }}>
@@ -112,54 +121,37 @@ export default function Hero({ locale }: { locale: string }) {
                   )}
                 </AnimatePresence>
 
-                {/* CTAs */}
-                <AnimatePresence>
-                  {ready && (
-                    <motion.div
-                      {...fadeUp}
-                      transition={{ duration: 0.8, ease: easeExpoOut, delay: 0.35 }}
-                      className="flex flex-col sm:flex-row gap-4 mb-16"
-                    >
-                      <a
-                        href={getWhatsAppLink(locale)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-3 bg-green hover:bg-green-600 text-white font-display font-bold text-base px-8 py-4 rounded-xl shadow-green transition-colors"
-                      >
-                        <WAIcon />
-                        {t.hero.ctaWhatsapp}
-                      </a>
-                      <a
-                        href={`tel:${CALL_NUMBER}`}
-                        className="inline-flex items-center justify-center gap-3 border border-white/10 hover:border-[#C9A96E]/35 text-white/80 hover:text-white font-display font-medium text-base px-8 py-4 rounded-xl transition-all backdrop-blur-sm"
-                      >
-                        <PhoneIcon />
-                        {t.hero.ctaCall}
-                      </a>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* CTAs — always visible */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-16">
+                  <a
+                    href={getWhatsAppLink(locale)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 bg-green hover:bg-green-600 text-white font-display font-bold text-base px-8 py-4 rounded-xl shadow-green transition-colors"
+                  >
+                    <WAIcon />
+                    {t.hero.ctaWhatsapp}
+                  </a>
+                  <a
+                    href={`tel:${CALL_NUMBER}`}
+                    className="inline-flex items-center justify-center gap-3 border border-[#C9A96E]/50 hover:border-[#C9A96E] text-white/80 hover:text-white font-display font-medium text-base px-8 py-4 rounded-xl transition-all backdrop-blur-sm"
+                  >
+                    <PhoneIcon />
+                    {t.hero.ctaCall}
+                  </a>
+                </div>
 
-                {/* Stats */}
-                <AnimatePresence>
-                  {ready && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 1, ease: easeExpoOut, delay: 0.55 }}
-                      className="flex items-center gap-10 flex-wrap"
-                    >
-                      {STATS.map((s, i) => (
-                        <div key={i} className="flex flex-col">
-                          <span className="font-display font-bold text-[2.25rem] leading-none" style={{ color: '#C9A96E' }}>
-                            {s.value}
-                          </span>
-                          <span className="text-text-muted text-xs mt-2 tracking-wide">{s.label}</span>
-                        </div>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Stats — always visible */}
+                <div className="flex items-center gap-10 flex-wrap">
+                  {STATS.map((s, i) => (
+                    <div key={i} className="flex flex-col">
+                      <span className="font-display font-bold text-[2.25rem] leading-none" style={{ color: '#C9A96E' }}>
+                        {s.value}
+                      </span>
+                      <span className="text-text-muted text-xs mt-2 tracking-wide">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

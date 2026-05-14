@@ -6,10 +6,11 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/hero/Hero';
 import Marquee from '@/components/ui/Marquee';
+import WhoAmI from '@/components/sections/WhoAmI';
 import HowItWorks from '@/components/sections/HowItWorks';
 import WhatISupply from '@/components/sections/WhatISupply';
-import WhoAmI from '@/components/sections/WhoAmI';
 import WhyCheaper from '@/components/sections/WhyCheaper';
+import Testimonials from '@/components/sections/Testimonials';
 import RecentProjects from '@/components/sections/RecentProjects';
 import ForWhom from '@/components/sections/ForWhom';
 import Contact from '@/components/sections/Contact';
@@ -63,10 +64,11 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
       <main>
         <Hero locale={locale} />
         <Marquee />
+        <WhoAmI locale={locale} />
         <HowItWorks />
         <WhatISupply />
-        <WhoAmI locale={locale} />
         <WhyCheaper />
+        <Testimonials />
         <RecentProjects />
         <ForWhom />
         <Contact locale={locale} />
