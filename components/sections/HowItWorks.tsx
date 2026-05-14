@@ -10,9 +10,9 @@ export default function HowItWorks() {
   const v = shouldReduce ? revealVariantsReduced : revealVariants;
 
   return (
-    <section id="how" className="py-32 sm:py-44 relative overflow-hidden" style={{ background: '#0C0D10' }}>
-      {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent)' }} />
+    <section id="how" className="py-32 sm:py-44 relative" style={{ background: '#FFFFFF' }}>
+      {/* Top hairline */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
@@ -24,55 +24,50 @@ export default function HowItWorks() {
           {/* Header */}
           <div className="mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
             <div>
-              <motion.div variants={v} className="flex items-center gap-4 mb-8">
-                <div className="w-8 h-px bg-[#C9A96E]" />
-                <span className="section-label">Processus</span>
-              </motion.div>
-              <motion.h2 variants={v} className="display-xl text-white max-w-xl">
+              <motion.span variants={v} className="block mb-6 font-display text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: '#C9A96E' }}>
+                Processus
+              </motion.span>
+              <motion.h2 variants={v} className="display-xl max-w-xl" style={{ color: '#111118', fontStyle: 'italic' }}>
                 {t.how.title}
               </motion.h2>
             </div>
-            <motion.p variants={v} className="text-text-muted text-base max-w-xs leading-relaxed">
+            <motion.p variants={v} className="text-base max-w-xs leading-relaxed" style={{ color: '#888' }}>
               Trois étapes simples entre vous et des économies concrètes.
             </motion.p>
           </div>
 
-          {/* Steps — 3 columns, editorial */}
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          {/* Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: 'rgba(0,0,0,0.06)' }}>
             {t.how.steps.map((step, i) => (
               <motion.div
                 key={i}
                 variants={v}
-                className="group relative md:px-12 first:md:pl-0 last:md:pr-0 py-12 md:py-0"
-                style={{
-                  borderRight: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                  borderBottom: '1px solid rgba(255,255,255,0.05)',
-                  paddingBottom: '3rem',
-                }}
+                className="group bg-white px-10 py-14"
               >
-                {/* Step number — large watermark */}
+                {/* Large editorial number */}
                 <div
-                  className="font-display font-bold text-[100px] leading-none select-none mb-8 transition-colors duration-700"
-                  style={{ color: 'rgba(255,255,255,0.03)' }}
+                  className="font-display font-light leading-none mb-10 select-none"
+                  style={{
+                    fontSize: 'clamp(5rem, 10vw, 8rem)',
+                    color: 'rgba(201,169,110,0.18)',
+                    letterSpacing: '-0.04em',
+                    lineHeight: 0.9,
+                  }}
                   aria-hidden
                 >
                   {step.n}
                 </div>
 
-                {/* Gold accent line — grows on hover */}
-                <div
-                  className="h-px mb-8 transition-all duration-500 group-hover:opacity-100"
-                  style={{
-                    width: '3rem',
-                    background: 'linear-gradient(90deg, #C9A96E, transparent)',
-                    opacity: 0.5,
-                  }}
-                />
+                {/* Gold accent */}
+                <div className="w-10 h-px mb-8 transition-all duration-500 group-hover:w-16" style={{ background: '#C9A96E' }} />
 
-                <h3 className="font-display font-bold text-xl text-white mb-4 leading-tight">
+                <h3
+                  className="font-display font-semibold text-2xl mb-5 leading-tight"
+                  style={{ color: '#111118' }}
+                >
                   {step.title}
                 </h3>
-                <p className="text-text-muted leading-[1.85] text-[15px]">
+                <p className="text-[15px] leading-[1.85]" style={{ color: '#888' }}>
                   {step.body}
                 </p>
               </motion.div>
@@ -80,6 +75,9 @@ export default function HowItWorks() {
           </div>
         </motion.div>
       </div>
+
+      {/* Bottom hairline */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
     </section>
   );
 }

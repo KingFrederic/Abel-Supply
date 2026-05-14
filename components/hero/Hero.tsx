@@ -74,7 +74,20 @@ export default function Hero({ locale }: { locale: string }) {
     <>
       {showIntro && <IntroSweep />}
 
-      <div ref={containerRef} className="relative" style={{ height: isMobile ? '120vh' : '200vh' }}>
+      <div ref={containerRef} className="relative" style={{ height: isMobile ? '100vh' : '200vh' }}>
+        {/* Mobile: full-bleed photo background */}
+        {isMobile && (
+          <div
+            className="fixed inset-0 z-0"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-rLtWTW1PQI0?auto=format&fit=crop&w=1200&q=80')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(7,7,8,0.6) 0%, rgba(7,7,8,0.4) 50%, rgba(7,7,8,0.85) 100%)' }} />
+          </div>
+        )}
         {canvasVisible && !isMobile && <HeroScene reduced={!!shouldReduce} />}
 
         {/* Sticky overlay — sits above the canvas */}

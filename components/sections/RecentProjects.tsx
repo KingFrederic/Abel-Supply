@@ -1,58 +1,63 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useT } from '@/lib/i18n/provider';
 import { revealVariants, revealVariantsReduced, staggerParent } from '@/lib/motion';
 import PinnedCaseStudy from './PinnedCaseStudy';
 
-const PROJECT_CARDS = [
+const CDN = 'https://images.unsplash.com';
+
+const PROJECTS = [
   {
+    src: `${CDN}/photo-G48h926L2qo?auto=format&fit=crop&w=1400&q=85`,
+    fallback: `${CDN}/photo-jEKph2ZmRXY?auto=format&fit=crop&w=1400&q=85`,
+    alt: 'Villa R+1 — Cocody, Abidjan',
     label: 'Villa R+1',
     location: 'Cocody',
-    desc: 'Fondations · Charpente · Plomberie',
-    bg: 'linear-gradient(145deg, #18130A 0%, #2D1E0A 60%, #1A1208 100%)',
-    accent: '#C9A96E',
     tag: 'Bâtisse complète',
+    span: 'lg:col-span-2 lg:row-span-2',
+    height: 'min-h-[360px] lg:min-h-[560px]',
   },
   {
+    src: `${CDN}/photo-4nDEdZZjaQQ?auto=format&fit=crop&w=900&q=80`,
+    fallback: `${CDN}/photo-rLtWTW1PQI0?auto=format&fit=crop&w=900&q=80`,
+    alt: 'Résidence R+2 — Yopougon',
     label: 'Résidence R+2',
     location: 'Yopougon',
-    desc: 'Béton armé · Toiture · Électricité',
-    bg: 'linear-gradient(145deg, #0A1412 0%, #0F2520 60%, #081510 100%)',
-    accent: '#10B981',
     tag: 'Gros œuvre',
+    span: '',
+    height: 'min-h-[260px]',
   },
   {
+    src: `${CDN}/photo-PlBsJ5MybGc?auto=format&fit=crop&w=900&q=80`,
+    fallback: `${CDN}/photo-kO8f82u73Es?auto=format&fit=crop&w=900&q=80`,
+    alt: 'Immeuble R+3 — Marcory',
     label: 'Immeuble R+3',
     location: 'Marcory',
-    desc: 'Structure · Façades · Sanitaires',
-    bg: 'linear-gradient(145deg, #0A0A18 0%, #14142A 60%, #0A0A1A 100%)',
-    accent: '#818CF8',
     tag: 'Multi-lots',
+    span: '',
+    height: 'min-h-[260px]',
   },
   {
-    label: 'Villa Duplex',
-    location: 'Bingerville',
-    desc: 'Matériaux complets · Carrelage',
-    bg: 'linear-gradient(145deg, #180A10 0%, #2D1018 60%, #1A0A10 100%)',
-    accent: '#F472B6',
-    tag: 'Finitions haut de gamme',
-  },
-  {
-    label: 'Salle de bain',
+    src: `${CDN}/photo-vYqFeeM2XPk?auto=format&fit=crop&w=900&q=80`,
+    fallback: `${CDN}/photo-GqlosWVi5zo?auto=format&fit=crop&w=900&q=80`,
+    alt: 'Salle de bain premium — Plateau',
+    label: 'Salle de bain premium',
     location: 'Plateau',
-    desc: 'Marbre · Robinetterie premium',
-    bg: 'linear-gradient(145deg, #181008 0%, #28200F 60%, #181208 100%)',
-    accent: '#C9A96E',
-    tag: 'Sanitaires',
+    tag: 'Finitions haut de gamme',
+    span: '',
+    height: 'min-h-[260px]',
   },
   {
+    src: `${CDN}/photo-ZFxyH1abdTE?auto=format&fit=crop&w=900&q=80`,
+    fallback: `${CDN}/photo-bRC0o9MUTh8?auto=format&fit=crop&w=900&q=80`,
+    alt: 'Chantier mixte — Abobo',
     label: 'Chantier mixte',
     location: 'Abobo',
-    desc: 'Électricité · Plomberie · Bâtisse',
-    bg: 'linear-gradient(145deg, #081512 0%, #0D2520 60%, #081512 100%)',
-    accent: '#10B981',
     tag: 'Lot complet',
+    span: '',
+    height: 'min-h-[260px]',
   },
 ];
 
@@ -63,97 +68,99 @@ export default function RecentProjects() {
 
   return (
     <>
-      <section id="projects" className="py-32 sm:py-44 relative overflow-hidden" style={{ background: '#0C0D10' }}>
+      <section id="projects" className="py-24 sm:py-32 relative" style={{ background: '#070708' }}>
         {/* Top divider */}
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent)' }} />
 
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div
-            initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={staggerParent}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={staggerParent}
           >
             {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-14">
               <div>
-                <motion.div variants={v} className="flex items-center gap-4 mb-8">
-                  <div className="w-8 h-px bg-[#C9A96E]" />
-                  <span className="section-label">Portfolio</span>
-                </motion.div>
-                <motion.h2 variants={v} className="display-xl text-white">{t.projects.title}</motion.h2>
+                <motion.span variants={v} className="block mb-6 font-display text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: '#C9A96E' }}>
+                  Portfolio
+                </motion.span>
+                <motion.h2 variants={v} className="display-xl text-white" style={{ fontStyle: 'italic' }}>
+                  {t.projects.title}
+                </motion.h2>
               </div>
               <motion.p variants={v} className="text-text-muted text-base max-w-xs leading-relaxed">
-                Chantiers livrés dans la région d&apos;Abidjan et au-delà.
+                Chantiers livrés dans la région d&apos;Abidjan et au-delà. Photos réelles à venir.
               </motion.p>
             </div>
 
-            {/* Project grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
-              {PROJECT_CARDS.map((project, i) => (
+            {/* Photo mosaic */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: 'rgba(255,255,255,0.04)' }}>
+              {PROJECTS.map((proj, i) => (
                 <motion.div
                   key={i}
                   variants={v}
-                  className="group relative overflow-hidden"
-                  style={{ background: '#0C0D10', minHeight: '280px' }}
+                  className={`group relative overflow-hidden ${proj.height} ${proj.span}`}
+                  style={{ background: '#111' }}
                 >
-                  {/* CSS photography bg */}
-                  <div
-                    className="absolute inset-0 opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                    style={{ background: project.bg }}
+                  {/* Photo */}
+                  <Image
+                    src={proj.src}
+                    alt={proj.alt}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = proj.fallback; }}
                   />
 
-                  {/* Simulated architectural texture */}
+                  {/* Gradient overlay */}
                   <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 40px)',
-                    }}
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to top, rgba(7,7,8,0.88) 0%, rgba(7,7,8,0.2) 60%, transparent 100%)' }}
                   />
 
-                  {/* Accent glow on hover */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: `radial-gradient(ellipse at 80% 20%, ${project.accent}10 0%, transparent 60%)` }}
-                  />
-
-                  <div className="relative p-8 flex flex-col h-full" style={{ minHeight: '280px' }}>
-                    {/* Tag */}
-                    <div className="mb-auto">
-                      <span
-                        className="inline-block text-[10px] font-display font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full"
-                        style={{
-                          background: `${project.accent}12`,
-                          border: `1px solid ${project.accent}25`,
-                          color: project.accent,
-                        }}
+                  {/* Content at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                    <span
+                      className="inline-block text-[9px] font-display font-semibold uppercase tracking-[0.2em] px-2.5 py-1 mb-3"
+                      style={{
+                        background: 'rgba(201,169,110,0.12)',
+                        border: '1px solid rgba(201,169,110,0.25)',
+                        color: '#C9A96E',
+                      }}
+                    >
+                      {proj.tag}
+                    </span>
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <p className="text-text-dim text-[10px] font-display uppercase tracking-[0.18em] mb-1 flex items-center gap-1.5">
+                          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                          </svg>
+                          {proj.location}
+                        </p>
+                        <h3 className="font-display font-bold text-white text-base leading-tight">{proj.label}</h3>
+                      </div>
+                      {/* Arrow */}
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ background: 'rgba(201,169,110,0.15)', border: '1px solid rgba(201,169,110,0.3)' }}
                       >
-                        {project.tag}
-                      </span>
-                    </div>
-
-                    {/* Bottom info */}
-                    <div className="mt-16">
-                      <p className="text-text-dim text-[11px] font-display uppercase tracking-[0.18em] mb-2 flex items-center gap-2">
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
-                        {project.location}
-                      </p>
-                      <h3 className="font-display font-bold text-xl text-white mb-2">{project.label}</h3>
-                      <p className="text-text-muted text-sm">{project.desc}</p>
+                      </div>
                     </div>
-
-                    {/* Bottom accent line */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ background: `linear-gradient(90deg, ${project.accent}60, transparent)` }}
-                    />
                   </div>
+
+                  {/* Bottom gold line on hover */}
+                  <div
+                    className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500"
+                    style={{ background: '#C9A96E' }}
+                  />
                 </motion.div>
               ))}
             </div>
-
-            <motion.p variants={v} className="text-center text-text-dim text-sm mt-10 font-display">
-              {t.projects.placeholder} · Photos réelles à venir
-            </motion.p>
           </motion.div>
         </div>
       </section>
