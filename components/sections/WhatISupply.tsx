@@ -4,34 +4,35 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useT } from '@/lib/i18n/provider';
 import { revealVariants, revealVariantsReduced, staggerParent } from '@/lib/motion';
+import { proxy, picsum } from '@/lib/img';
 
 const CDN = 'https://images.unsplash.com';
 
 const PHOTOS = [
   {
-    src: `${CDN}/photo-ZFxyH1abdTE?auto=format&fit=crop&w=1200&q=80`,
-    fallback: `${CDN}/photo-PlBsJ5MybGc?auto=format&fit=crop&w=1200&q=80`,
+    src: proxy(`${CDN}/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80`),
+    fallback: picsum('batisse-ciment', 1200, 900),
     alt: 'Matériaux de bâtisse — ciment, béton, acier',
     span: 'lg:col-span-2 lg:row-span-2',
     height: 'min-h-[420px] lg:min-h-[600px]',
   },
   {
-    src: `${CDN}/photo-pxs2yJ6Lb9k?auto=format&fit=crop&w=800&q=80`,
-    fallback: `${CDN}/photo-scUBcasSvbE?auto=format&fit=crop&w=800&q=80`,
+    src: proxy(`${CDN}/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80`),
+    fallback: picsum('plomberie-tuyaux', 800, 600),
     alt: 'Plomberie — tuyaux, raccords, citernes',
     span: '',
     height: 'min-h-[280px]',
   },
   {
-    src: `${CDN}/photo-DzYT1tfcDq4?auto=format&fit=crop&w=800&q=80`,
-    fallback: `${CDN}/photo-bRC0o9MUTh8?auto=format&fit=crop&w=800&q=80`,
+    src: proxy(`${CDN}/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80`),
+    fallback: picsum('electricite-cables', 800, 600),
     alt: 'Électricité — câbles, disjoncteurs, luminaires',
     span: '',
     height: 'min-h-[280px]',
   },
   {
-    src: `${CDN}/photo-vYqFeeM2XPk?auto=format&fit=crop&w=1200&q=80`,
-    fallback: `${CDN}/photo-GqlosWVi5zo?auto=format&fit=crop&w=1200&q=80`,
+    src: proxy(`${CDN}/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80`),
+    fallback: picsum('salle-de-bain', 1200, 600),
     alt: 'Salles de bain et portes — sanitaires, finitions',
     span: 'sm:col-span-2 lg:col-span-2',
     height: 'min-h-[280px]',
