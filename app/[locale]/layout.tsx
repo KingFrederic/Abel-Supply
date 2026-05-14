@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Space_Grotesk } from 'next/font/google';
+import { Inter, Space_Grotesk, Cormorant_Garamond } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import '../globals.css';
 import { I18nProvider } from '@/lib/i18n/provider';
@@ -16,6 +15,13 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -41,7 +47,7 @@ export default function LocaleLayout({
   const t = translations[locale as Locale];
 
   return (
-    <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable} ${cormorant.variable}`}>
       <body>
         <I18nProvider translations={t}>{children}</I18nProvider>
       </body>

@@ -14,6 +14,7 @@ export default function IntroSweep() {
     // 400ms exit → done
     const t3 = setTimeout(() => {
       setPhase('done');
+      sessionStorage.setItem('introFired', '1');
       window.dispatchEvent(new Event('intro:complete'));
     }, 1600);
 

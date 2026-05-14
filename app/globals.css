@@ -57,19 +57,19 @@ section, header, footer, main { position: relative; z-index: 1; }
 
 /* ─── TYPOGRAPHY SCALE ─── */
 .display-hero {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  font-size: clamp(4rem, 9vw, 8rem);
-  font-weight: 800; line-height: 0.92; letter-spacing: -0.04em;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: 600; line-height: 0.9; letter-spacing: -0.02em;
 }
 .display-2xl {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 800; line-height: 0.95; letter-spacing: -0.035em;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 600; line-height: 0.92; letter-spacing: -0.015em;
 }
 .display-xl {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700; line-height: 1.05; letter-spacing: -0.025em;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600; line-height: 1.0; letter-spacing: -0.01em;
 }
 .display-lg {
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
