@@ -6,10 +6,8 @@ import { useT } from '@/lib/i18n/provider';
 import { revealVariants, revealVariantsReduced, staggerParent } from '@/lib/motion';
 import { proxy, picsum } from '@/lib/img';
 
-// Professional supplier photo — proxied so the local Next.js server fetches it
-// (avoids Unsplash CDN blocking localhost's Referer header).
-// picsum fallback is fetched directly by the browser and has no domain restrictions.
-const PHOTO = proxy('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=85');
+const GDRIVE_ID = '1lfNuyHcY_q3hD42eMZxcUe6V_R0KsHxA';
+const PHOTO = proxy(`https://drive.google.com/uc?export=view&id=${GDRIVE_ID}`);
 const PHOTO_FALLBACK = picsum('supplier-pro', 1200, 1600);
 
 export default function WhoAmI({ locale: _locale }: { locale: string }) {

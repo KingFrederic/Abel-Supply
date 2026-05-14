@@ -1,6 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-const ALLOWED = new Set(['images.unsplash.com', 'source.unsplash.com']);
+const ALLOWED = new Set([
+  'images.unsplash.com',
+  'source.unsplash.com',
+  'drive.google.com',
+  'lh3.googleusercontent.com',
+]);
 
 export async function GET(req: NextRequest) {
   const src = req.nextUrl.searchParams.get('src');
