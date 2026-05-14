@@ -24,7 +24,11 @@ export default function DevisForm() {
     }
   }
 
-  const inputCls = 'w-full bg-bg border border-white/8 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-amber/40 focus:bg-bg-elev transition-all placeholder:text-text-dim';
+  const inputCls =
+    'w-full bg-[#0A0B0E] border border-white/[0.08] rounded-xl px-5 py-4 text-white text-[15px] focus:outline-none focus:border-[#C9A96E]/30 focus:bg-[#0D0E12] transition-all placeholder:text-white/20';
+
+  const labelCls =
+    'text-[#7A7880] text-[11px] font-display uppercase tracking-[0.15em] mb-2 block';
 
   return (
     <AnimatePresence mode="wait">
@@ -35,14 +39,20 @@ export default function DevisForm() {
           animate={{ opacity: 1, scale: 1 }}
           className="min-h-[300px] flex flex-col items-center justify-center text-center gap-5 py-10"
         >
-          <div className="w-14 h-14 rounded-full bg-green/15 border border-green/30 flex items-center justify-center text-green">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center"
+            style={{
+              background: 'rgba(16,185,129,0.1)',
+              border: '1px solid rgba(16,185,129,0.3)',
+              color: '#10B981',
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
           <div>
             <p className="text-white font-display font-bold text-xl mb-2">{f.success}</p>
-            <p className="text-text-muted text-sm">Abel vous répondra sous 24 heures.</p>
+            <p className="text-[#7A7880] text-sm">Parfait. Abel vous contacte sous 24 heures.</p>
           </div>
         </motion.div>
       ) : (
@@ -51,47 +61,69 @@ export default function DevisForm() {
           onSubmit={handleSubmit}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="space-y-4"
+          className="space-y-5"
           noValidate
         >
+          {/* Honeypot */}
           <input type="text" name="company" className="hidden" aria-hidden tabIndex={-1} autoComplete="off" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <label className="text-text-muted text-xs font-display uppercase tracking-wider">{f.name} *</label>
-              <input type="text" name="name" required placeholder="Abel Idowu" className={inputCls} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className={labelCls}>{f.name} *</label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Abel Idowu"
+                className={inputCls}
+              />
             </div>
-            <div className="space-y-1.5">
-              <label className="text-text-muted text-xs font-display uppercase tracking-wider">{f.phone} *</label>
-              <input type="tel" name="phone" required placeholder="+225 07 00 00 00 00" className={inputCls} />
+            <div>
+              <label className={labelCls}>{f.phone} *</label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                placeholder="+225 07 00 00 00 00"
+                className={inputCls}
+              />
             </div>
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-text-muted text-xs font-display uppercase tracking-wider">{f.message} *</label>
+          <div>
+            <label className={labelCls}>{f.message} *</label>
             <textarea
-              name="message" required rows={4}
+              name="message"
+              required
+              rows={4}
               placeholder="Villa R+2, fondations + charpente + plomberie..."
               className={`${inputCls} resize-none`}
             />
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-text-muted text-xs font-display uppercase tracking-wider">{f.file}</label>
+          <div>
+            <label className={labelCls}>{f.file}</label>
             <div className="relative">
               <input
-                type="file" name="file" accept="application/pdf,image/*"
-                className="w-full bg-bg border border-white/8 rounded-xl px-4 py-3 text-text-muted text-sm
-                  focus:outline-none focus:border-amber/40 transition-all
-                  file:mr-3 file:bg-bg-card file:border file:border-white/10 file:text-text-muted file:text-xs
-                  file:rounded-lg file:px-3 file:py-1.5 file:cursor-pointer cursor-pointer
-                  hover:border-white/15"
+                type="file"
+                name="file"
+                accept="application/pdf,image/*"
+                className="w-full bg-[#0A0B0E] border border-white/[0.08] rounded-xl px-5 py-4 text-[#7A7880] text-[15px]
+                  focus:outline-none focus:border-[#C9A96E]/30 transition-all cursor-pointer
+                  hover:border-white/[0.12]
+                  file:mr-3 file:bg-[#111318] file:border file:border-white/[0.08] file:text-[#7A7880] file:text-xs
+                  file:rounded-lg file:px-3 file:py-1.5 file:cursor-pointer"
               />
             </div>
           </div>
 
           {status === 'error' && (
-            <p className="text-red-400 text-sm bg-red-400/8 border border-red-400/20 rounded-xl px-4 py-3">
+            <p className="text-red-400 text-sm rounded-xl px-5 py-4"
+              style={{
+                background: 'rgba(248,113,113,0.06)',
+                border: '1px solid rgba(248,113,113,0.2)',
+              }}
+            >
               {f.error}
             </p>
           )}
@@ -99,15 +131,18 @@ export default function DevisForm() {
           <motion.button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full bg-amber hover:bg-amber-400 text-bg font-display font-bold text-base py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
-            whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
+            className="w-full font-display font-bold text-[15px] py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+            style={{ background: '#C9A96E', color: '#070708' }}
+            whileHover={{ scale: status === 'loading' ? 1 : 1.01, backgroundColor: '#E8D5A3' }}
             whileTap={{ scale: 0.99 }}
           >
             {status === 'loading'
-              ? <span className="flex items-center justify-center gap-2.5">
-                  <span className="w-4 h-4 rounded-full border-2 border-bg border-t-transparent animate-spin" />
+              ? (
+                <span className="flex items-center justify-center gap-2.5">
+                  <span className="w-4 h-4 rounded-full border-2 border-[#070708] border-t-transparent animate-spin" />
                   Envoi en cours...
                 </span>
+              )
               : f.submit}
           </motion.button>
         </motion.form>

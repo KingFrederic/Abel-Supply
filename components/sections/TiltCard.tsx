@@ -34,13 +34,13 @@ export default function TiltCard({ title, items, icon, index }: TiltCardProps) {
   }
 
   const itemList = items.split(' · ');
-  const COLORS = ['#F59E0B', '#10B981', '#6366F1', '#EC4899'];
+  const COLORS = ['#C9A96E', '#10B981', '#6366F1', '#EC4899'];
   const accentColor = COLORS[index % COLORS.length];
 
   return (
     <motion.div
       variants={shouldReduce ? revealVariantsReduced : revealVariants}
-      className="relative h-72 cursor-pointer"
+      className="relative h-80 cursor-pointer"
       style={{ perspective: 900 }}
       onMouseMove={onMove}
       onMouseEnter={() => setHover(true)}
@@ -59,42 +59,60 @@ export default function TiltCard({ title, items, icon, index }: TiltCardProps) {
       >
         {/* ── FRONT ── */}
         <div
-          className="absolute inset-0 rounded-2xl bg-bg-card border border-white/6 p-7 flex flex-col justify-between overflow-hidden"
-          style={{ backfaceVisibility: 'hidden', opacity: hover ? 0 : 1, transition: 'opacity 0.28s' }}
+          className="absolute inset-0 rounded-2xl p-7 flex flex-col justify-between overflow-hidden"
+          style={{
+            background: '#0E0F13',
+            border: '1px solid rgba(255,255,255,0.06)',
+            backfaceVisibility: 'hidden',
+            opacity: hover ? 0 : 1,
+            transition: 'opacity 0.28s',
+          }}
         >
           {/* Dynamic spotlight */}
           <div
-            className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
+            className="absolute inset-0 rounded-2xl pointer-events-none"
             style={{
-              background: `radial-gradient(200px circle at ${glow.x}% ${glow.y}%, rgba(255,255,255,0.04) 0%, transparent 70%)`,
+              background: `radial-gradient(200px circle at ${glow.x}% ${glow.y}%, rgba(255,255,255,0.03) 0%, transparent 70%)`,
               opacity: hover ? 0 : 1,
+              transition: 'opacity 0.3s',
             }}
           />
 
-          {/* Top section: index + icon */}
+          {/* Top section: icon in circle */}
           <div className="flex items-start justify-between">
-            <span className="font-display font-bold text-[52px] leading-none" style={{ color: accentColor, opacity: 0.12 }}>
+            <span
+              className="font-display font-bold text-[52px] leading-none select-none"
+              style={{ color: accentColor, opacity: 0.1 }}
+            >
               0{index + 1}
             </span>
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{ background: `${accentColor}12`, color: accentColor, border: `1px solid ${accentColor}22` }}
+              className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{
+                background: `${accentColor}12`,
+                color: accentColor,
+                border: `1px solid ${accentColor}22`,
+              }}
             >
               {icon}
             </div>
           </div>
 
-          {/* Title */}
+          {/* Bottom: title + tag */}
           <div>
-            <div className="w-8 h-0.5 mb-3" style={{ background: accentColor }} />
-            <h3 className="font-display font-bold text-xl text-white leading-tight">{title}</h3>
-            <p className="text-text-muted text-xs mt-2">Survol pour détails →</p>
+            <h3 className="font-display font-bold text-2xl text-white leading-tight mb-3">{title}</h3>
+            <span
+              className="text-[13px] font-display font-medium"
+              style={{ color: '#C9A96E' }}
+            >
+              Voir le catalogue →
+            </span>
           </div>
 
-          {/* Bottom glow line */}
+          {/* Always-visible thin bottom accent line */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-0.5"
-            style={{ background: `linear-gradient(90deg, transparent, ${accentColor}40, transparent)` }}
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${accentColor}30, transparent)` }}
           />
         </div>
 
@@ -104,31 +122,47 @@ export default function TiltCard({ title, items, icon, index }: TiltCardProps) {
           style={{
             opacity: hover ? 1 : 0,
             transition: 'opacity 0.28s',
-            background: `linear-gradient(145deg, ${accentColor}10 0%, #13151a 60%)`,
-            border: `1px solid ${accentColor}30`,
+            background: `linear-gradient(145deg, ${accentColor}10 0%, #0E0F13 60%)`,
+            border: `1px solid ${accentColor}20`,
           }}
         >
+          {/* Icon + title */}
           <div>
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+              className="w-10 h-10 rounded-full flex items-center justify-center mb-5"
               style={{ background: `${accentColor}18`, color: accentColor }}
             >
               {icon}
             </div>
-            <h3 className="font-display font-bold text-base mb-4" style={{ color: accentColor }}>{title}</h3>
+            <h3
+              className="font-display font-bold text-base mb-5"
+              style={{ color: accentColor }}
+            >
+              {title}
+            </h3>
           </div>
 
-          <ul className="space-y-2.5">
+          {/* Item list — clean, no bullets */}
+          <div>
             {itemList.map((item, i) => (
-              <li key={i} className="flex items-center gap-3 text-text-muted text-sm">
-                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: accentColor }} />
+              <div
+                key={i}
+                className="py-2 text-[15px] border-b last:border-0"
+                style={{
+                  color: 'rgba(255,255,255,0.7)',
+                  borderColor: 'rgba(255,255,255,0.04)',
+                }}
+              >
                 {item.trim()}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
 
-          <div className="absolute bottom-0 left-0 right-0 h-0.5"
-            style={{ background: `linear-gradient(90deg, transparent, ${accentColor}50, transparent)` }} />
+          {/* Bottom accent */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${accentColor}50, transparent)` }}
+          />
         </div>
       </div>
     </motion.div>
